@@ -11,5 +11,10 @@
     <packaging>jar</packaging>
 
     <name>test-server</name>
-
+    <dependencies>
+        <dependency>
+            <groupId>org.wxc</groupId>
+            <artifactId>test-api</artifactId>
+        </dependency>
+    </dependencies>
 </project>

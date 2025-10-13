@@ -50,17 +50,17 @@
     <!--子项目依赖版本管理-->
     <dependencyManagement>
         <dependencies>
-<!--            <dependency>-->
-<!--                <groupId>com.pig</groupId>-->
-<!--                <artifactId>rpc-core</artifactId>-->
-<!--                <version>${project.version}</version>-->
-<!--            </dependency>-->
+            <dependency>
+                <groupId>org.wxc</groupId>
+                <artifactId>rpc-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
 
-<!--            <dependency>-->
-<!--                <groupId>com.pig</groupId>-->
-<!--                <artifactId>test-api</artifactId>-->
-<!--                <version>${project.version}</version>-->
-<!--            </dependency>-->
+            <dependency>
+                <groupId>org.wxc</groupId>
+                <artifactId>test-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>org.projectlombok</groupId>

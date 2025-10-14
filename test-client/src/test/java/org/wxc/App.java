@@ -19,9 +19,9 @@ public class App {
 
 
 
-        RPCResponse<?> response = rpcClient.send(req);
-        User user = (User)response.getData();
-        System.out.println(user);
+//        RPCResponse<?> response = rpcClient.send(req);
+//        User user = (User)response.getData();
+//        System.out.println(user);
     }
 
 

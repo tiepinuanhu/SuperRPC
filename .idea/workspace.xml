@@ -4,21 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ae846d5-ea7b-43cb-8842-e7c3e5ae7de9" name="Changes" comment="no bug">
-      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/dto/RPCRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/dto/RPCResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/enums/RPCRespStatus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/RPCClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/RPCServer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/socket/SocketRPCClient.java" afterDir="false" />
+    <list default="true" id="9ae846d5-ea7b-43cb-8842-e7c3e5ae7de9" name="Changes" comment="刚开始RPC-Client的socket实现">
+      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/socket/SocketRPCServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-api/src/main/java/org/wxc/api/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/test-api/src/main/java/org/wxc/api/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-client/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-client/src/main/java/org/wxc/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/src/main/java/org/wxc/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-client/src/test/java/org/wxc/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/src/test/java/org/wxc/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/test-server/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-server/src/main/java/org/wxc/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/test-server/src/main/java/org/wxc/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-server/src/main/java/org/wxc/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/test-server/src/main/java/org/wxc/service/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/socket/SocketRPCClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/socket/SocketRPCClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/test/java/org/wxc/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/src/test/java/org/wxc/App.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,7 +127,8 @@
       <workItem from="1760358486517" duration="29000" />
       <workItem from="1760358551841" duration="57000" />
       <workItem from="1760361037060" duration="155000" />
-      <workItem from="1760361255914" duration="2890000" />
+      <workItem from="1760361255914" duration="2948000" />
+      <workItem from="1760412314392" duration="1001000" />
     </task>
     <task id="LOCAL-00001" summary="no bug">
       <option name="closed" value="true" />
@@ -147,7 +138,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760361381408</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="刚开始RPC-Client的socket实现">
+      <option name="closed" value="true" />
+      <created>1760364191220</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1760364191220</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -155,6 +154,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="no bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="no bug" />
+    <MESSAGE value="刚开始RPC-Client的socket实现" />
+    <option name="LAST_COMMIT_MESSAGE" value="刚开始RPC-Client的socket实现" />
   </component>
 </project>

@@ -4,15 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ae846d5-ea7b-43cb-8842-e7c3e5ae7de9" name="Changes" comment="模拟RPC客户端请求RPC服务端">
-      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/config/RPCServiceConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/provider/Impl/SimpleServiceProvider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/provider/ServiceProvider.java" afterDir="false" />
+    <list default="true" id="9ae846d5-ea7b-43cb-8842-e7c3e5ae7de9" name="Changes" comment="添加了ServiceProvider用于服务注册与发现，服务端首先要注册服务，才能在后续处理请求时获取到服务并进行调用。">
+      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/handler/RPCReqHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/dto/RPCRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/dto/RPCRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/RPCServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/RPCServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/socket/SocketRPCServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/socket/SocketRPCServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-server/src/main/java/org/wxc/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/test-server/src/main/java/org/wxc/App.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,7 +167,7 @@
       <workItem from="1760358551841" duration="57000" />
       <workItem from="1760361037060" duration="155000" />
       <workItem from="1760361255914" duration="2948000" />
-      <workItem from="1760412314392" duration="8677000" />
+      <workItem from="1760412314392" duration="10319000" />
     </task>
     <task id="LOCAL-00001" summary="no bug">
       <option name="closed" value="true" />
@@ -206,16 +201,36 @@
       <option name="project" value="LOCAL" />
       <updated>1760422103118</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="添加了ServiceProvider用于服务注册与发现，服务端首先要注册服务，才能在后续处理请求时获取到服务并进行调用。">
+      <option name="closed" value="true" />
+      <created>1760428539893</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1760428539893</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="no bug" />
     <MESSAGE value="刚开始RPC-Client的socket实现" />
     <MESSAGE value="模拟RPC客户端请求RPC服务端" />
-    <option name="LAST_COMMIT_MESSAGE" value="模拟RPC客户端请求RPC服务端" />
+    <MESSAGE value="添加了ServiceProvider用于服务注册与发现，服务端首先要注册服务，才能在后续处理请求时获取到服务并进行调用。" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加了ServiceProvider用于服务注册与发现，服务端首先要注册服务，才能在后续处理请求时获取到服务并进行调用。" />
   </component>
 </project>

@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ae846d5-ea7b-43cb-8842-e7c3e5ae7de9" name="Changes" comment="刚开始RPC-Client的socket实现">
+    <list default="true" id="9ae846d5-ea7b-43cb-8842-e7c3e5ae7de9" name="Changes" comment="模拟RPC客户端请求RPC服务端">
+      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/config/RPCServiceConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/provider/Impl/SimpleServiceProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/provider/ServiceProvider.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/socket/SocketRPCClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/socket/SocketRPCClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/dto/RPCRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/dto/RPCRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/RPCServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/RPCServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/socket/SocketRPCServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/socket/SocketRPCServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-client/src/main/java/org/wxc/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/src/main/java/org/wxc/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/test-server/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test-server/src/main/java/org/wxc/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/test-server/src/main/java/org/wxc/App.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -66,7 +67,10 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Application.App (1).executor": "Debug",
     "Application.App.executor": "Run",
+    "Application.client.executor": "Run",
+    "Application.server.executor": "Run",
     "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -86,9 +90,9 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.App (1)">
-    <configuration name="App (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.wxc.App" />
+  <component name="RunManager" selected="Application.client">
+    <configuration name="client" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="org.wxc.ClientMain" />
       <module name="test-client" />
       <extension name="coverage">
         <pattern>
@@ -100,8 +104,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.wxc.App" />
+    <configuration name="server" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="org.wxc.ServerMain" />
       <module name="test-server" />
       <extension name="coverage">
         <pattern>
@@ -134,10 +138,14 @@
       <option name="showConsole" value="true" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Application.server" />
+      <item itemvalue="Application.client" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.App (1)" />
-        <item itemvalue="Application.App" />
+        <item itemvalue="Application.client" />
+        <item itemvalue="Application.server" />
       </list>
     </recent_temporary>
   </component>
@@ -164,7 +172,7 @@
       <workItem from="1760358551841" duration="57000" />
       <workItem from="1760361037060" duration="155000" />
       <workItem from="1760361255914" duration="2948000" />
-      <workItem from="1760412314392" duration="2537000" />
+      <workItem from="1760412314392" duration="8677000" />
     </task>
     <task id="LOCAL-00001" summary="no bug">
       <option name="closed" value="true" />
@@ -190,7 +198,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760413492959</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="模拟RPC客户端请求RPC服务端">
+      <option name="closed" value="true" />
+      <created>1760422103118</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1760422103118</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -199,6 +215,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="no bug" />
     <MESSAGE value="刚开始RPC-Client的socket实现" />
-    <option name="LAST_COMMIT_MESSAGE" value="刚开始RPC-Client的socket实现" />
+    <MESSAGE value="模拟RPC客户端请求RPC服务端" />
+    <option name="LAST_COMMIT_MESSAGE" value="模拟RPC客户端请求RPC服务端" />
   </component>
 </project>

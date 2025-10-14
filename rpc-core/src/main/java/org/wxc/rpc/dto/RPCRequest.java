@@ -1,5 +1,6 @@
 package org.wxc.rpc.dto;
 
+import cn.hutool.core.util.StrUtil;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -40,4 +41,10 @@ public class RPCRequest implements Serializable {
     private Object[] parameters;
 
 
+
+    public String rpcServiceName() {
+        return interfaceName + "#"
+                + StrUtil.blankToDefault(version, StrUtil.EMPTY) + "#"
+                + StrUtil.blankToDefault(group, StrUtil.EMPTY);
+    }
 }

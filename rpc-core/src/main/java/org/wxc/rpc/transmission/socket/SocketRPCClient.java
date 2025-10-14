@@ -16,6 +16,16 @@ import java.net.Socket;
  */
 @Slf4j
 public class SocketRPCClient implements RPCClient {
+
+
+    private final String host;
+    private final int port;
+
+    public SocketRPCClient(String host, int port) {
+        this.host = host;
+        this.port = port;
+    }
+
     /**
      * 创建socket，发送请求，获取返回结果
      * @param request

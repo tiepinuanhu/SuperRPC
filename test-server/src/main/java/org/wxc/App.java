@@ -1,18 +1,12 @@
 package org.wxc;
 
 import org.wxc.rpc.transmission.RPCServer;
+import org.wxc.rpc.transmission.socket.SocketRPCServer;
 
-/**
- * Hello world!
- *
- */
+
 public class App {
     public static void main( String[] args ) {
-        RPCServer rpcServer = new RPCServer() {
-            @Override
-            public void start() {
-
-            }
-        };
+        RPCServer rpcServer = new SocketRPCServer(8888);
+        rpcServer.start();
     }
 }

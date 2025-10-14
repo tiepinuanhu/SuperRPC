@@ -3,7 +3,10 @@ package org.wxc;
 import org.wxc.rpc.dto.RPCRequest;
 import org.wxc.rpc.dto.RPCResponse;
 import org.wxc.rpc.transmission.RPCClient;
-import org.wxc.rpc.transmission.socket.SocketRPCClient;
+import org.wxc.rpc.transmission.socket.client.SocketRPCClient;
+import org.wxc.rpc.util.ThreadPoolUtils;
+
+import java.util.concurrent.ExecutorService;
 
 /**
  * Hello world!
@@ -20,8 +23,15 @@ public class ClientMain {
                 .parameters(new Object[]{1L})
                 .parameterTypes(new Class[]{Long.class})
                 .build();
-        RPCResponse<?> response = rpcClient.send(request);
-        System.out.println("response.getData() = " + response.getData());
+        ExecutorService pool = ThreadPoolUtils.createIoIntensiveThreadPool("rpc-client-");
+        for (int i = 0; i < 10; i++) {
+            int finalI = i;
+            pool.submit(() -> {
+                RPCResponse<?> response = rpcClient.send(request);
+                System.out.println("data-" + finalI + ": " + response.getData());
+            });
+
+        }
     }
 
 

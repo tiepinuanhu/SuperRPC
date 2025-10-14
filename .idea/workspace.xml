@@ -4,10 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ae846d5-ea7b-43cb-8842-e7c3e5ae7de9" name="Changes" comment="添加了ServiceProvider用于服务注册与发现，服务端首先要注册服务，才能在后续处理请求时获取到服务并进行调用。">
-      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/handler/RPCReqHandler.java" afterDir="false" />
+    <list default="true" id="9ae846d5-ea7b-43cb-8842-e7c3e5ae7de9" name="Changes" comment="封装请求处理类RPCReqHandler">
+      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/socket/server/SocketReqHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/util/ShutdownHookUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/util/ThreadPoolUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/socket/SocketRPCServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/socket/SocketRPCServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/socket/SocketRPCClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/socket/client/SocketRPCClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/socket/SocketRPCServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/socket/server/SocketRPCServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/main/java/org/wxc/ClientMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/src/main/java/org/wxc/ClientMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-server/src/main/java/org/wxc/ServerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/test-server/src/main/java/org/wxc/ServerMain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,6 +78,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/WangXinchao/Desktop/SuperRPC/rpc-core/src/main/java/org/wxc/rpc/util",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -85,6 +91,11 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\WangXinchao\Desktop\SuperRPC\rpc-core\src\main\java\org\wxc\rpc\util" />
+    </key>
+  </component>
   <component name="RunManager" selected="Application.client">
     <configuration name="client" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="org.wxc.ClientMain" />
@@ -167,7 +178,8 @@
       <workItem from="1760358551841" duration="57000" />
       <workItem from="1760361037060" duration="155000" />
       <workItem from="1760361255914" duration="2948000" />
-      <workItem from="1760412314392" duration="10319000" />
+      <workItem from="1760412314392" duration="11519000" />
+      <workItem from="1760441545861" duration="2792000" />
     </task>
     <task id="LOCAL-00001" summary="no bug">
       <option name="closed" value="true" />
@@ -209,7 +221,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760428539893</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="封装请求处理类RPCReqHandler">
+      <option name="closed" value="true" />
+      <created>1760430674320</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1760430674320</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -231,6 +251,7 @@
     <MESSAGE value="刚开始RPC-Client的socket实现" />
     <MESSAGE value="模拟RPC客户端请求RPC服务端" />
     <MESSAGE value="添加了ServiceProvider用于服务注册与发现，服务端首先要注册服务，才能在后续处理请求时获取到服务并进行调用。" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加了ServiceProvider用于服务注册与发现，服务端首先要注册服务，才能在后续处理请求时获取到服务并进行调用。" />
+    <MESSAGE value="封装请求处理类RPCReqHandler" />
+    <option name="LAST_COMMIT_MESSAGE" value="封装请求处理类RPCReqHandler" />
   </component>
 </project>

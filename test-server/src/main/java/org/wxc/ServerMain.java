@@ -2,7 +2,7 @@ package org.wxc;
 
 import org.wxc.rpc.config.RPCServiceConfig;
 import org.wxc.rpc.transmission.RPCServer;
-import org.wxc.rpc.transmission.socket.SocketRPCServer;
+import org.wxc.rpc.transmission.socket.server.SocketRPCServer;
 import org.wxc.service.UserServiceImpl;
 
 

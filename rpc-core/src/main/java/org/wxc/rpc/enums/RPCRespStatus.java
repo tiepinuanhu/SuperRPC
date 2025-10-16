@@ -3,6 +3,7 @@ package org.wxc.rpc.enums;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
+import sun.security.provider.certpath.OCSPResponse;
 
 /**
  * @author wangxinchao
@@ -18,5 +19,13 @@ public enum RPCRespStatus {
 
     private final int code;
     private final String message;
+
+
+    public static boolean isSuccess(int code) {
+        return SUCCESS.getCode() == code;
+    }
+    public static boolean isFail(int code) {
+        return !isSuccess(code);
+    }
 
 }

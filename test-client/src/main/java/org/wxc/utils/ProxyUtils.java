@@ -1,0 +1,25 @@
+package org.wxc.utils;
+
+import org.wxc.rpc.proxy.PRCClientProxy;
+import org.wxc.rpc.transmission.socket.client.SocketRPCClient;
+
+/**
+ * @author wangxinchao
+ * @date 2025/10/16 14:11
+ */
+public class ProxyUtils {
+
+    private static final SocketRPCClient rpcClient = new SocketRPCClient("127.0.0.1", 8888);
+
+    private static final PRCClientProxy proxy = new PRCClientProxy(rpcClient);
+    /**
+     * 提供一个接口，返回一个接口的代理对象
+     * 这个代理对象，与服务端8888端口建立，发送rpc请求获取数据并返回
+     * @param clazz
+     * @return
+     * @param <T>
+     */
+    public static <T> T getProxy(Class<T> clazz) {
+        return proxy.getProxy(clazz);
+    }
+}

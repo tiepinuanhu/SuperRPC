@@ -2,10 +2,13 @@ package org.wxc.rpc.transmission.socket.server;
 
 import lombok.extern.slf4j.Slf4j;
 import org.wxc.rpc.config.RPCServiceConfig;
+import org.wxc.rpc.constant.RpcConstant;
 import org.wxc.rpc.dto.RPCRequest;
 import org.wxc.rpc.dto.RPCResponse;
+import org.wxc.rpc.factory.SingletonFactory;
 import org.wxc.rpc.handler.RPCReqHandler;
 import org.wxc.rpc.provider.Impl.SimpleServiceProvider;
+import org.wxc.rpc.provider.Impl.ZKServiceProvider;
 import org.wxc.rpc.provider.ServiceProvider;
 import org.wxc.rpc.transmission.RPCServer;
 import org.wxc.rpc.util.ThreadPoolUtils;
@@ -38,8 +41,12 @@ public class SocketRPCServer implements RPCServer {
      */
     private final ExecutorService pool;
 
+    public SocketRPCServer() {
+        this(RpcConstant.SERVER_PORT);
+    }
+
     public SocketRPCServer(int port) {
-        this(port, new SimpleServiceProvider());
+        this(port, SingletonFactory.getInstance(ZKServiceProvider.class));
 
     }
 

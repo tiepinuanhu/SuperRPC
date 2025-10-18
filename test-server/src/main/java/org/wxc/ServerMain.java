@@ -11,15 +11,13 @@ import org.wxc.service.UserServiceImpl;
 
 public class ServerMain {
     public static void main( String[] args ) {
-        RPCServer rpcServer = new SocketRPCServer(8888);
+        RPCServer rpcServer = new SocketRPCServer();
 
         // 发布服务：UserServiceImpl
-        UserServiceImpl userService = new UserServiceImpl();
-        RPCServiceConfig rpcServiceConfig = new RPCServiceConfig(userService);
+        RPCServiceConfig rpcServiceConfig = new RPCServiceConfig(new UserServiceImpl());
         rpcServer.publishService(rpcServiceConfig);
         // 启动服务
         rpcServer.start();
-
 
     }
 }

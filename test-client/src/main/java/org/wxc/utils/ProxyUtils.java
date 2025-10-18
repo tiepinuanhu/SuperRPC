@@ -1,5 +1,7 @@
 package org.wxc.utils;
 
+import cn.hutool.core.lang.Singleton;
+import org.wxc.rpc.factory.SingletonFactory;
 import org.wxc.rpc.proxy.PRCClientProxy;
 import org.wxc.rpc.transmission.socket.client.SocketRPCClient;
 
@@ -9,7 +11,8 @@ import org.wxc.rpc.transmission.socket.client.SocketRPCClient;
  */
 public class ProxyUtils {
 
-    private static final SocketRPCClient rpcClient = new SocketRPCClient("127.0.0.1", 8888);
+    private static final SocketRPCClient rpcClient =
+            SingletonFactory.getInstance(SocketRPCClient.class);
 
     private static final PRCClientProxy proxy = new PRCClientProxy(rpcClient);
     /**

@@ -24,10 +24,13 @@
             <groupId>org.wxc</groupId>
             <artifactId>rpc-core</artifactId>
         </dependency>
+
         <dependency>
-            <groupId>org.apache.curator</groupId>
-            <artifactId>curator-recipes</artifactId>
-            <version>4.2.0</version>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
         </dependency>
+
     </dependencies>
 </project>

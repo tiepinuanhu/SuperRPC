@@ -20,7 +20,7 @@ import static jdk.nashorn.internal.runtime.regexp.joni.Config.log;
  */
 @Slf4j
 @AllArgsConstructor
-public class SocketReqHandler implements Runnable{
+public class SocketReqHandler implements Runnable {
 
 
     private final Socket socket;
@@ -28,27 +28,29 @@ public class SocketReqHandler implements Runnable{
 
     private final RPCReqHandler reqHandler;
 
+    /**
+     * 服务端线程执行的逻辑
+     */
     @SneakyThrows
     @Override
     public void run() {
+        // 读取socket获取RPC Request
         ObjectInputStream objectInputStream
                 = new ObjectInputStream(socket.getInputStream());
         RPCRequest request = (RPCRequest)objectInputStream.readObject();
         System.out.println("request = " + request);
 
 
-        // 处理请求, 反射调用
+        // 处理请求, 反射调用，这里将处理逻辑进一步封装到RPCReqHandler中
+        // 这里就写的少了
         Object data = reqHandler.invoke(request);
 
         log.debug("调用结果：{}", data);
-        // 返回结果
+        // 根据socket，写入返回结果
         RPCResponse<Object> success =
                 RPCResponse.success(request.getRequestId(),  data);
-
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
-
         objectOutputStream.writeObject(success);
-
         objectOutputStream.flush();
     }
 }

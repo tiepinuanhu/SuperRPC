@@ -4,14 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ae846d5-ea7b-43cb-8842-e7c3e5ae7de9" name="Changes" comment="在服务端使用线程池处理RPC请求">
-      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/exception/RPCException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/proxy/PRCClientProxy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-client/src/main/java/org/wxc/utils/ProxyUtils.java" afterDir="false" />
+    <list default="true" id="9ae846d5-ea7b-43cb-8842-e7c3e5ae7de9" name="Changes" comment="使用动态代理，代理客户端发送rpc请求">
+      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/constant/RpcConstant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/factory/SingletonFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/loadbalance/Impl/RandomLoadBalance.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/loadbalance/LoadBalance.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/provider/Impl/ZKServiceProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/registry/Impl/ZKServiceDiscovery.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/registry/Impl/ZKServiceRegistry.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/registry/ServiceDiscovery.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/registry/ServiceRegistry.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/registry/zk/ZkClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/util/IPUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/enums/RPCRespStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/enums/RPCRespStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-client/src/main/java/org/wxc/ClientMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/src/main/java/org/wxc/ClientMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/socket/client/SocketRPCClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/socket/client/SocketRPCClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/socket/server/SocketRPCServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/socket/server/SocketRPCServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/socket/server/SocketReqHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/socket/server/SocketReqHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/main/java/org/wxc/utils/ProxyUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/src/main/java/org/wxc/utils/ProxyUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/test-server/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test-server/src/main/java/org/wxc/ServerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/test-server/src/main/java/org/wxc/ServerMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-server/src/test/java/org/wxc/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test-server/src/test/java/org/wxc/AppTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,40 +76,70 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Application.App (1).executor&quot;: &quot;Debug&quot;,
-    &quot;Application.App.executor&quot;: &quot;Run&quot;,
-    &quot;Application.client.executor&quot;: &quot;Run&quot;,
-    &quot;Application.server.executor&quot;: &quot;Run&quot;,
-    &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/WangXinchao/Desktop/SuperRPC/rpc-core/src/main/java/org/wxc/rpc/util&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Application.App (1).executor": "Debug",
+    "Application.App.executor": "Run",
+    "Application.AppTest.executor": "Run",
+    "Application.ClientMain.executor": "Run",
+    "Application.ServerMain (1).executor": "Run",
+    "Application.ServerMain.executor": "Run",
+    "Application.ZKServiceRegistry.executor": "Run",
+    "Application.client.executor": "Run",
+    "Application.server.executor": "Run",
+    "JUnit.AppTest.testConnection.executor": "Run",
+    "JUnit.AppTest.testCreate.executor": "Run",
+    "JUnit.AppTest.testDelete.executor": "Run",
+    "JUnit.AppTest.testGet.executor": "Run",
+    "JUnit.AppTest.testSet.executor": "Run",
+    "JUnit.AppTest.testWatcher.executor": "Run",
+    "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/WangXinchao/Desktop/SuperRPC/rpc-core/src/main/java/org/wxc/rpc/util",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "MavenSettings",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\WangXinchao\Desktop\SuperRPC\rpc-core\src\main\java\org\wxc\rpc\util" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.client">
-    <configuration name="client" type="Application" factoryName="Application" temporary="true">
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="Application" />
+      </set>
+    </option>
+    <option name="configurationStatuses">
+      <map>
+        <entry key="Application">
+          <value>
+            <map>
+              <entry key="ClientMain" value="STOPPED" />
+            </map>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.ClientMain">
+    <configuration name="ClientMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.wxc.ClientMain" />
       <module name="test-client" />
       <extension name="coverage">
@@ -109,7 +152,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="server" type="Application" factoryName="Application" temporary="true">
+    <configuration name="ServerMain (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.wxc.ServerMain" />
       <module name="test-server" />
       <extension name="coverage">
@@ -118,6 +161,48 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServerMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.wxc.ServerMain" />
+      <module name="test-server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.wxc.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ZKServiceRegistry" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.wxc.rpc.registry.Impl.ZKServiceRegistry" />
+      <module name="rpc-core" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.wxc.rpc.registry.Impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AppTest.testWatcher" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="test-server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.wxc.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.wxc" />
+      <option name="MAIN_CLASS_NAME" value="org.wxc.AppTest" />
+      <option name="METHOD_NAME" value="testWatcher" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -144,13 +229,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Application.server" />
-      <item itemvalue="Application.client" />
+      <item itemvalue="Application.ClientMain" />
+      <item itemvalue="Application.ServerMain" />
+      <item itemvalue="Application.ServerMain (1)" />
+      <item itemvalue="Application.ZKServiceRegistry" />
+      <item itemvalue="JUnit.AppTest.testWatcher" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.client" />
-        <item itemvalue="Application.server" />
+        <item itemvalue="Application.ClientMain" />
+        <item itemvalue="Application.ServerMain (1)" />
+        <item itemvalue="Application.ServerMain" />
+        <item itemvalue="Application.ZKServiceRegistry" />
+        <item itemvalue="JUnit.AppTest.testWatcher" />
       </list>
     </recent_temporary>
   </component>
@@ -180,6 +271,10 @@
       <workItem from="1760412314392" duration="11519000" />
       <workItem from="1760441545861" duration="4192000" />
       <workItem from="1760591559468" duration="4094000" />
+      <workItem from="1760622075175" duration="1990000" />
+      <workItem from="1760624164685" duration="57000" />
+      <workItem from="1760670981369" duration="1582000" />
+      <workItem from="1760752759689" duration="18453000" />
     </task>
     <task id="LOCAL-00001" summary="no bug">
       <option name="closed" value="true" />
@@ -237,7 +332,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760447318356</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="使用动态代理，代理客户端发送rpc请求">
+      <option name="closed" value="true" />
+      <created>1760622173634</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1760622173634</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -261,6 +364,7 @@
     <MESSAGE value="添加了ServiceProvider用于服务注册与发现，服务端首先要注册服务，才能在后续处理请求时获取到服务并进行调用。" />
     <MESSAGE value="封装请求处理类RPCReqHandler" />
     <MESSAGE value="在服务端使用线程池处理RPC请求" />
-    <option name="LAST_COMMIT_MESSAGE" value="在服务端使用线程池处理RPC请求" />
+    <MESSAGE value="使用动态代理，代理客户端发送rpc请求" />
+    <option name="LAST_COMMIT_MESSAGE" value="使用动态代理，代理客户端发送rpc请求" />
   </component>
 </project>

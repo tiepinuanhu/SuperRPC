@@ -11,6 +11,7 @@ import org.wxc.rpc.provider.Impl.SimpleServiceProvider;
 import org.wxc.rpc.provider.Impl.ZKServiceProvider;
 import org.wxc.rpc.provider.ServiceProvider;
 import org.wxc.rpc.transmission.RPCServer;
+import org.wxc.rpc.util.ShutdownHookUtils;
 import org.wxc.rpc.util.ThreadPoolUtils;
 
 import java.io.ObjectInputStream;
@@ -60,8 +61,13 @@ public class SocketRPCServer implements RPCServer {
                 .createCpuIntensiveThreadPool("socket-rpc-server-");
     }
 
+    /**
+     * 服务端执行逻辑
+     * 1. 绑定ShutdownHook，执行程序结束后的清理逻辑
+     */
     @Override
     public void start() {
+        ShutdownHookUtils.clearAll();
         // 服务端绑定端口8888
         try (ServerSocket serverSocket = new ServerSocket(port)) {
             log.info("Server started at {}", port);

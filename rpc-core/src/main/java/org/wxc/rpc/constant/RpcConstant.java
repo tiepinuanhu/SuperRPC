@@ -6,6 +6,9 @@ package org.wxc.rpc.constant;
  */
 public class RpcConstant {
 
+    /**
+     * RPC 服务端默认端口
+     */
     public static final int SERVER_PORT = 9999;
 
     public static final String ZK_IP = "124.70.131.122";

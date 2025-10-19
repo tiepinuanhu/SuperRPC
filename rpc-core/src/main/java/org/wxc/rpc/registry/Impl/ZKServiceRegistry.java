@@ -1,6 +1,7 @@
 package org.wxc.rpc.registry.Impl;
 
 import cn.hutool.core.util.StrUtil;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.wxc.rpc.constant.RpcConstant;
 import org.wxc.rpc.factory.SingletonFactory;
@@ -8,6 +9,7 @@ import org.wxc.rpc.registry.ServiceRegistry;
 import org.wxc.rpc.registry.zk.ZkClient;
 import org.wxc.rpc.util.IPUtils;
 
+import java.net.InetAddress;
 import java.net.InetSocketAddress;
 
 /**
@@ -37,6 +39,18 @@ public class ZKServiceRegistry implements ServiceRegistry {
                 + StrUtil.SLASH + rpcServiceName
                 + StrUtil.SLASH + ipPort;
         zkClient.createPersistentNode(servicePath);
+    }
+
+
+    /**
+     * 注销zookeeper上本机的所有服务
+     */
+    @SneakyThrows
+    @Override
+    public void clearAll() {
+        String host = InetAddress.getLocalHost().getHostAddress();
+        int serverPort = RpcConstant.SERVER_PORT;
+        zkClient.clearAll(new InetSocketAddress(host, serverPort));
     }
 
     public static void main(String[] args) {

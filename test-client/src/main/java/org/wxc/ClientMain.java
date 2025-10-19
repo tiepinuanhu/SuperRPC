@@ -10,6 +10,9 @@ import org.wxc.rpc.transmission.socket.client.SocketRPCClient;
 import org.wxc.utils.ProxyUtils;
 
 import java.lang.reflect.Proxy;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * Hello world!
@@ -18,7 +21,12 @@ import java.lang.reflect.Proxy;
 public class ClientMain {
     public static void main( String[] args) {
         UserService userService = ProxyUtils.getProxy(UserService.class);
-        User user = userService.getUser(1L);
-        System.out.println("user = " + user);
+        ExecutorService pool = Executors.newFixedThreadPool(10);
+        for (int i = 0; i < 10; i++) {
+            pool.execute(() -> {
+                User user = userService.getUser(1L);
+                System.out.println("user = " + user);
+            });
+        }
     }
 }

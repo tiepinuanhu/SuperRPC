@@ -10,4 +10,5 @@ public interface ServiceRegistry {
     void registerService(String rpcServiceName, InetSocketAddress address);
 
 
+    void clearAll();
 }

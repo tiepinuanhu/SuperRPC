@@ -4,27 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ae846d5-ea7b-43cb-8842-e7c3e5ae7de9" name="Changes" comment="使用动态代理，代理客户端发送rpc请求">
-      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/constant/RpcConstant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/factory/SingletonFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/loadbalance/Impl/RandomLoadBalance.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/loadbalance/LoadBalance.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/provider/Impl/ZKServiceProvider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/registry/Impl/ZKServiceDiscovery.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/registry/Impl/ZKServiceRegistry.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/registry/ServiceDiscovery.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/registry/ServiceRegistry.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/registry/zk/ZkClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/util/IPUtils.java" afterDir="false" />
+    <list default="true" id="9ae846d5-ea7b-43cb-8842-e7c3e5ae7de9" name="Changes" comment="基于Zookeeper实现服务端的服务注册，客户端会根据调用的服务名称负载均衡获取IP和Port，">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/socket/client/SocketRPCClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/socket/client/SocketRPCClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/constant/RpcConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/constant/RpcConstant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/registry/Impl/ZKServiceRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/registry/Impl/ZKServiceRegistry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/registry/ServiceRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/registry/ServiceRegistry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/registry/zk/ZkClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/registry/zk/ZkClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/socket/server/SocketRPCServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/socket/server/SocketRPCServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/socket/server/SocketReqHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/socket/server/SocketReqHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-client/src/main/java/org/wxc/utils/ProxyUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/src/main/java/org/wxc/utils/ProxyUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/test-server/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-server/src/main/java/org/wxc/ServerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/test-server/src/main/java/org/wxc/ServerMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-server/src/test/java/org/wxc/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test-server/src/test/java/org/wxc/AppTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/util/ShutdownHookUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/util/ShutdownHookUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/main/java/org/wxc/ClientMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/src/main/java/org/wxc/ClientMain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +99,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "MavenSettings",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -132,6 +120,8 @@
           <value>
             <map>
               <entry key="ClientMain" value="STOPPED" />
+              <entry key="ServerMain" value="STOPPED" />
+              <entry key="ServerMain (1)" value="STOPPED" />
             </map>
           </value>
         </entry>
@@ -237,9 +227,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ClientMain" />
         <item itemvalue="Application.ServerMain (1)" />
         <item itemvalue="Application.ServerMain" />
+        <item itemvalue="Application.ClientMain" />
         <item itemvalue="Application.ZKServiceRegistry" />
         <item itemvalue="JUnit.AppTest.testWatcher" />
       </list>
@@ -274,7 +264,8 @@
       <workItem from="1760622075175" duration="1990000" />
       <workItem from="1760624164685" duration="57000" />
       <workItem from="1760670981369" duration="1582000" />
-      <workItem from="1760752759689" duration="18453000" />
+      <workItem from="1760752759689" duration="19321000" />
+      <workItem from="1760872388091" duration="4388000" />
     </task>
     <task id="LOCAL-00001" summary="no bug">
       <option name="closed" value="true" />
@@ -340,7 +331,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760622173634</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="基于Zookeeper实现服务端的服务注册，客户端会根据调用的服务名称负载均衡获取IP和Port，">
+      <option name="closed" value="true" />
+      <created>1760787419962</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1760787419962</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -365,6 +364,7 @@
     <MESSAGE value="封装请求处理类RPCReqHandler" />
     <MESSAGE value="在服务端使用线程池处理RPC请求" />
     <MESSAGE value="使用动态代理，代理客户端发送rpc请求" />
-    <option name="LAST_COMMIT_MESSAGE" value="使用动态代理，代理客户端发送rpc请求" />
+    <MESSAGE value="基于Zookeeper实现服务端的服务注册，客户端会根据调用的服务名称负载均衡获取IP和Port，" />
+    <option name="LAST_COMMIT_MESSAGE" value="基于Zookeeper实现服务端的服务注册，客户端会根据调用的服务名称负载均衡获取IP和Port，" />
   </component>
 </project>

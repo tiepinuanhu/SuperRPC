@@ -95,32 +95,31 @@
                 <version>${kryo.version}</version>
             </dependency>
 
-            <!--            <dependency>-->
-            <!--                <groupId>com.github.rholder</groupId>-->
-            <!--                <artifactId>guava-retrying</artifactId>-->
-            <!--                <version>${retry.version}</version>-->
-            <!--            </dependency>-->
-            <!--            <dependency>-->
-            <!--                <groupId>com.google.guava</groupId>-->
-            <!--                <artifactId>guava</artifactId>-->
-            <!--                <version>${guava.version}</version>-->
-            <!--            </dependency>-->
-            <!--            <dependency>-->
-            <!--                <groupId>com.caucho</groupId>-->
-            <!--                <artifactId>hessian</artifactId>-->
-            <!--                <version>${hessian.version}</version>-->
-            <!--            </dependency>-->
-            <!-- protostuff -->
-            <!--            <dependency>-->
-            <!--                <groupId>io.protostuff</groupId>-->
-            <!--                <artifactId>protostuff-core</artifactId>-->
-            <!--                <version>${protostuff.version}</version>-->
-            <!--            </dependency>-->
-            <!--            <dependency>-->
-            <!--                <groupId>io.protostuff</groupId>-->
-            <!--                <artifactId>protostuff-runtime</artifactId>-->
-            <!--                <version>${protostuff.version}</version>-->
-            <!--            </dependency>-->
+            <dependency>
+                <groupId>com.github.rholder</groupId>
+                <artifactId>guava-retrying</artifactId>
+                <version>${retry.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.caucho</groupId>
+                <artifactId>hessian</artifactId>
+                <version>${hessian.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.protostuff</groupId>
+                <artifactId>protostuff-core</artifactId>
+                <version>${protostuff.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.protostuff</groupId>
+                <artifactId>protostuff-runtime</artifactId>
+                <version>${protostuff.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 </project>

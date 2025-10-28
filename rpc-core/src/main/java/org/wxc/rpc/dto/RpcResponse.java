@@ -17,7 +17,7 @@ import java.io.Serializable;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class RPCResponse<T> implements Serializable {
+public class RpcResponse<T> implements Serializable {
     private static final long serialVersionUID = 1L;
 
     // 一个response对应一个request
@@ -35,8 +35,8 @@ public class RPCResponse<T> implements Serializable {
      * @return
      * @param <T>
      */
-    public static <T> RPCResponse<T> success(String requestId, T data) {
-        RPCResponse<T> response = new RPCResponse<>();
+    public static <T> RpcResponse<T> success(String requestId, T data) {
+        RpcResponse<T> response = new RpcResponse<>();
         response.setRequestId(requestId);
         response.setCode(200);
         response.setData(data);
@@ -50,15 +50,15 @@ public class RPCResponse<T> implements Serializable {
      * @return
      * @param <T>
      */
-    public static <T> RPCResponse<T> fail(String requestId, RPCRespStatus status) {
-        RPCResponse<T> response = new RPCResponse<>();
+    public static <T> RpcResponse<T> fail(String requestId, RPCRespStatus status) {
+        RpcResponse<T> response = new RpcResponse<>();
         response.setRequestId(requestId);
         response.setCode(status.getCode());
         response.setMessage(status.getMessage());
         return response;
     }
-    public static <T> RPCResponse<T> fail(String requestId, String  message) {
-        RPCResponse<T> response = new RPCResponse<>();
+    public static <T> RpcResponse<T> fail(String requestId, String  message) {
+        RpcResponse<T> response = new RpcResponse<>();
         response.setRequestId(requestId);
         response.setCode(RPCRespStatus.FAIL.getCode());
         response.setMessage(message);

@@ -3,15 +3,13 @@ package org.wxc.rpc.transmission.socket.server;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-import org.wxc.rpc.dto.RPCRequest;
-import org.wxc.rpc.dto.RPCResponse;
+import org.wxc.rpc.dto.RpcRequest;
+import org.wxc.rpc.dto.RpcResponse;
 import org.wxc.rpc.handler.RPCReqHandler;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-
-import static jdk.nashorn.internal.runtime.regexp.joni.Config.log;
 
 /**
  * 服务端线程池执行的操作
@@ -37,7 +35,7 @@ public class SocketReqHandler implements Runnable {
         // 读取socket获取RPC Request
         ObjectInputStream objectInputStream
                 = new ObjectInputStream(socket.getInputStream());
-        RPCRequest request = (RPCRequest)objectInputStream.readObject();
+        RpcRequest request = (RpcRequest)objectInputStream.readObject();
         System.out.println("request = " + request);
 
 
@@ -47,8 +45,8 @@ public class SocketReqHandler implements Runnable {
 
         log.debug("调用结果：{}", data);
         // 根据socket，写入返回结果
-        RPCResponse<Object> success =
-                RPCResponse.success(request.getRequestId(),  data);
+        RpcResponse<Object> success =
+                RpcResponse.success(request.getRequestId(),  data);
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
         objectOutputStream.writeObject(success);
         objectOutputStream.flush();

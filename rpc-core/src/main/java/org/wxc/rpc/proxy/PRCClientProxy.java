@@ -2,8 +2,8 @@ package org.wxc.rpc.proxy;
 
 import cn.hutool.core.util.IdUtil;
 import org.wxc.rpc.config.RPCServiceConfig;
-import org.wxc.rpc.dto.RPCRequest;
-import org.wxc.rpc.dto.RPCResponse;
+import org.wxc.rpc.dto.RpcRequest;
+import org.wxc.rpc.dto.RpcResponse;
 import org.wxc.rpc.enums.RPCRespStatus;
 import org.wxc.rpc.exception.RPCException;
 import org.wxc.rpc.transmission.RPCClient;
@@ -49,7 +49,7 @@ public class PRCClientProxy implements InvocationHandler {
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         System.out.println("调用方法前");
 
-        RPCRequest request = RPCRequest.builder()
+        RpcRequest request = RpcRequest.builder()
                 .requestId(IdUtil.fastSimpleUUID())
                 // 通过方法获取对应的接口的全类名
                 .interfaceName(method.getDeclaringClass().getCanonicalName())
@@ -61,7 +61,7 @@ public class PRCClientProxy implements InvocationHandler {
                 .build();
         // 这里并没有调用method，因为客户端没办法创建一个被代理的对象
         // 所以只是根据method的信息，发送RPC请求
-        RPCResponse<?> response = rpcClient.send(request);
+        RpcResponse<?> response = rpcClient.send(request);
         check(request, response);
         Object data = response.getData();
         return data;
@@ -83,7 +83,7 @@ public class PRCClientProxy implements InvocationHandler {
     }
 
 
-    private void check(RPCRequest rpcRequest, RPCResponse<?> rpcResponse) {
+    private void check(RpcRequest rpcRequest, RpcResponse<?> rpcResponse) {
         if (Objects.isNull(rpcResponse)) {
             throw new RPCException("Response is null");
         }

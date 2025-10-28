@@ -1,6 +1,6 @@
 package org.wxc.rpc.registry;
 
-import org.wxc.rpc.dto.RPCRequest;
+import org.wxc.rpc.dto.RpcRequest;
 
 import java.net.InetSocketAddress;
 
@@ -14,5 +14,5 @@ public interface ServiceDiscovery {
      * @param request
      * @return
      */
-    InetSocketAddress lookupService(RPCRequest request);
+    InetSocketAddress lookupService(RpcRequest request);
 }

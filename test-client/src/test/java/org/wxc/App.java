@@ -1,8 +1,7 @@
 package org.wxc;
 
-import org.wxc.api.User;
-import org.wxc.rpc.dto.RPCRequest;
-import org.wxc.rpc.dto.RPCResponse;
+import org.wxc.rpc.dto.RpcRequest;
+import org.wxc.rpc.dto.RpcResponse;
 import org.wxc.rpc.transmission.RPCClient;
 
 /**
@@ -12,7 +11,7 @@ public class App {
     public static void main(String[] args) {
         RPCClient rpcClient = new RPCClient() {
             @Override
-            public RPCResponse<?> send(RPCRequest request) {
+            public RpcResponse<?> send(RpcRequest request) {
                 return null;
             }
         };

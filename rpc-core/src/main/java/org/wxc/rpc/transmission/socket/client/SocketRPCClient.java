@@ -1,8 +1,8 @@
 package org.wxc.rpc.transmission.socket.client;
 
 import lombok.extern.slf4j.Slf4j;
-import org.wxc.rpc.dto.RPCRequest;
-import org.wxc.rpc.dto.RPCResponse;
+import org.wxc.rpc.dto.RpcRequest;
+import org.wxc.rpc.dto.RpcResponse;
 import org.wxc.rpc.factory.SingletonFactory;
 import org.wxc.rpc.registry.Impl.ZKServiceDiscovery;
 import org.wxc.rpc.registry.ServiceDiscovery;
@@ -39,7 +39,7 @@ public class SocketRPCClient implements RPCClient {
      * @return
      */
     @Override
-    public RPCResponse<?> send(RPCRequest request) {
+    public RpcResponse<?> send(RpcRequest request) {
         InetSocketAddress address = serviceDiscovery.lookupService(request);
         // 与127.0.0.1:8080建立socket连接
         try (Socket socket = new Socket(address.getHostName(), address.getPort())) {
@@ -50,7 +50,7 @@ public class SocketRPCClient implements RPCClient {
             // 获取返回结果
             ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
             Object o = objectInputStream.readObject();
-            return (RPCResponse<?>) o;
+            return (RpcResponse<?>) o;
         } catch (Exception e) {
             log.error("Socket RPC Client error");
         }

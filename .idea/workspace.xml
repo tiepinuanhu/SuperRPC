@@ -4,13 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ae846d5-ea7b-43cb-8842-e7c3e5ae7de9" name="Changes" comment="在服务端本地缓存查询到的Zookeeper结点数组，使用一个set保存每个rpcService实现的机器address；map保存每个rpcService的子结点（ip:port的列表）；服务端的map还监听rpcService的子结点的变化更新map；最后，服务端停止时，将该机器注册的所有服务对应的子结点都删除。">
-      <change afterPath="$PROJECT_DIR$/test-client/src/main/java/org/wxc/nettytest/NettyClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-server/src/main/java/org/wxc/nettytest/NettyServer.java" afterDir="false" />
+    <list default="true" id="9ae846d5-ea7b-43cb-8842-e7c3e5ae7de9" name="Changes" comment="简单学习了Netty基础概念">
+      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/netty/client/NettyRpcClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/netty/client/NettyRpcClientHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/netty/server/NettyRpcServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/netty/server/NettyRpcServerHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-client/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/test-server/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/constant/RpcConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/constant/RpcConstant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/dto/RPCRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/dto/RpcRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/dto/RPCResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/dto/RpcResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/handler/RPCReqHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/handler/RPCReqHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/proxy/PRCClientProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/proxy/PRCClientProxy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/registry/Impl/ZKServiceDiscovery.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/registry/Impl/ZKServiceDiscovery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/registry/ServiceDiscovery.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/registry/ServiceDiscovery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/RPCClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/RPCClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/socket/client/SocketRPCClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/socket/client/SocketRPCClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/socket/server/SocketRPCServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/socket/server/SocketRPCServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/socket/server/SocketReqHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/socket/server/SocketReqHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/main/java/org/wxc/ClientMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/src/main/java/org/wxc/ClientMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/test/java/org/wxc/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/src/test/java/org/wxc/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-server/src/main/java/org/wxc/ServerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/test-server/src/main/java/org/wxc/ServerMain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,6 +120,9 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\WangXinchao\Desktop\SuperRPC\rpc-core\src\main\java\org\wxc\rpc\util" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.wxc.rpc.transmission.netty.client" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="configurationTypes">
@@ -120,6 +136,8 @@
           <value>
             <map>
               <entry key="ClientMain" value="STOPPED" />
+              <entry key="NettyClient" value="STOPPED" />
+              <entry key="NettyServer" value="STOPPED" />
               <entry key="ServerMain" value="STOPPED" />
               <entry key="ServerMain (1)" value="STOPPED" />
             </map>
@@ -128,7 +146,7 @@
       </map>
     </option>
   </component>
-  <component name="RunManager" selected="Application.NettyClient">
+  <component name="RunManager" selected="Application.ClientMain">
     <configuration name="ClientMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.wxc.ClientMain" />
       <module name="test-client" />
@@ -224,11 +242,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ClientMain" />
+        <item itemvalue="Application.ServerMain" />
         <item itemvalue="Application.NettyClient" />
         <item itemvalue="Application.NettyServer" />
         <item itemvalue="Application.ServerMain (1)" />
-        <item itemvalue="Application.ServerMain" />
-        <item itemvalue="Application.ClientMain" />
       </list>
     </recent_temporary>
   </component>
@@ -268,7 +286,7 @@
       <workItem from="1761294945209" duration="659000" />
       <workItem from="1761615461014" duration="1597000" />
       <workItem from="1761631904166" duration="175000" />
-      <workItem from="1761640996100" duration="1486000" />
+      <workItem from="1761640996100" duration="4708000" />
     </task>
     <task id="LOCAL-00001" summary="no bug">
       <option name="closed" value="true" />
@@ -350,7 +368,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760877705869</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="简单学习了Netty基础概念">
+      <option name="closed" value="true" />
+      <created>1761642552510</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1761642552510</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -377,6 +403,7 @@
     <MESSAGE value="使用动态代理，代理客户端发送rpc请求" />
     <MESSAGE value="基于Zookeeper实现服务端的服务注册，客户端会根据调用的服务名称负载均衡获取IP和Port，" />
     <MESSAGE value="在服务端本地缓存查询到的Zookeeper结点数组，使用一个set保存每个rpcService实现的机器address；map保存每个rpcService的子结点（ip:port的列表）；服务端的map还监听rpcService的子结点的变化更新map；最后，服务端停止时，将该机器注册的所有服务对应的子结点都删除。" />
-    <option name="LAST_COMMIT_MESSAGE" value="在服务端本地缓存查询到的Zookeeper结点数组，使用一个set保存每个rpcService实现的机器address；map保存每个rpcService的子结点（ip:port的列表）；服务端的map还监听rpcService的子结点的变化更新map；最后，服务端停止时，将该机器注册的所有服务对应的子结点都删除。" />
+    <MESSAGE value="简单学习了Netty基础概念" />
+    <option name="LAST_COMMIT_MESSAGE" value="简单学习了Netty基础概念" />
   </component>
 </project>

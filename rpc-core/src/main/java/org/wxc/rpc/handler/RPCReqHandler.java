@@ -1,7 +1,7 @@
 package org.wxc.rpc.handler;
 
 import lombok.extern.slf4j.Slf4j;
-import org.wxc.rpc.dto.RPCRequest;
+import org.wxc.rpc.dto.RpcRequest;
 import org.wxc.rpc.provider.ServiceProvider;
 
 import java.lang.reflect.InvocationTargetException;
@@ -30,7 +30,7 @@ public class RPCReqHandler {
      * @param request
      * @return
      */
-    public Object invoke(RPCRequest request) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+    public Object invoke(RpcRequest request) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         String serviceName = request.rpcServiceName();
         Object service = serviceProvider.getService(serviceName);
         log.debug("获取到的服务：{}", service.getClass().getCanonicalName());

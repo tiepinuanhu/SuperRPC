@@ -2,7 +2,7 @@ package org.wxc.rpc.registry.Impl;
 
 import cn.hutool.core.util.StrUtil;
 import org.wxc.rpc.constant.RpcConstant;
-import org.wxc.rpc.dto.RPCRequest;
+import org.wxc.rpc.dto.RpcRequest;
 import org.wxc.rpc.factory.SingletonFactory;
 import org.wxc.rpc.loadbalance.Impl.RandomLoadBalance;
 import org.wxc.rpc.loadbalance.LoadBalance;
@@ -34,7 +34,7 @@ public class ZKServiceDiscovery implements ServiceDiscovery {
     }
 
     @Override
-    public InetSocketAddress lookupService(RPCRequest request) {
+    public InetSocketAddress lookupService(RpcRequest request) {
         String servicePath = RpcConstant.ZK_ROOT_PATH + StrUtil.SLASH + request.rpcServiceName();
         List<String> children = zkClient.getChildren(servicePath);
         String addr = loadBalance.select(children);

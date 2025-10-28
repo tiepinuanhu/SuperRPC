@@ -1,7 +1,7 @@
 package org.wxc.rpc.transmission;
 
-import org.wxc.rpc.dto.RPCRequest;
-import org.wxc.rpc.dto.RPCResponse;
+import org.wxc.rpc.dto.RpcRequest;
+import org.wxc.rpc.dto.RpcResponse;
 
 /**
  * @author wangxinchao
@@ -9,5 +9,5 @@ import org.wxc.rpc.dto.RPCResponse;
  */
 public interface RPCClient {
 
-    RPCResponse<?> send(RPCRequest request);
+    RpcResponse<?> send(RpcRequest request);
 }

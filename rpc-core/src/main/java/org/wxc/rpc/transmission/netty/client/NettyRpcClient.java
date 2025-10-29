@@ -16,6 +16,8 @@ import org.wxc.rpc.constant.RpcConstant;
 import org.wxc.rpc.dto.RpcRequest;
 import org.wxc.rpc.dto.RpcResponse;
 import org.wxc.rpc.transmission.RPCClient;
+import org.wxc.rpc.transmission.netty.codec.NettyRpcDecoder;
+import org.wxc.rpc.transmission.netty.codec.NettyRpcEncoder;
 
 @Slf4j
 public class NettyRpcClient implements RPCClient {
@@ -34,8 +36,8 @@ public class NettyRpcClient implements RPCClient {
             .handler(new ChannelInitializer<NioSocketChannel>() {
                 @Override
                 protected void initChannel(NioSocketChannel ch) throws Exception {
-                    ch.pipeline().addLast(new StringEncoder());
-                    ch.pipeline().addLast(new StringDecoder());
+                    ch.pipeline().addLast(new NettyRpcEncoder());
+                    ch.pipeline().addLast(new NettyRpcDecoder());
                     ch.pipeline().addLast(new NettyRpcClientHandler());
 
                 }

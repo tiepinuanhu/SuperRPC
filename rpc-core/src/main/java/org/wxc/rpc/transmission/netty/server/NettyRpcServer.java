@@ -15,6 +15,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.wxc.rpc.config.RPCServiceConfig;
 import org.wxc.rpc.constant.RpcConstant;
 import org.wxc.rpc.transmission.RPCServer;
+import org.wxc.rpc.transmission.netty.codec.NettyRpcDecoder;
+import org.wxc.rpc.transmission.netty.codec.NettyRpcEncoder;
 
 /**
  * @author wangxinchao
@@ -36,8 +38,8 @@ public class NettyRpcServer implements RPCServer {
                     .childHandler(new ChannelInitializer<NioSocketChannel>() {
                         @Override
                         protected void initChannel(NioSocketChannel ch) throws Exception {
-                            ch.pipeline().addLast(new StringDecoder());
-                            ch.pipeline().addLast(new StringEncoder());
+                            ch.pipeline().addLast(new NettyRpcDecoder());
+                            ch.pipeline().addLast(new NettyRpcEncoder());
                             ch.pipeline().addLast(new NettyRpcServerHandler());
                         }
                     });

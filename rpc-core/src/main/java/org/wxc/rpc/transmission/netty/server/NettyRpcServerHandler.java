@@ -5,23 +5,37 @@ import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.extern.slf4j.Slf4j;
+import org.wxc.rpc.dto.RpcMsg;
 import org.wxc.rpc.dto.RpcRequest;
 import org.wxc.rpc.dto.RpcResponse;
+import org.wxc.rpc.enums.CompressType;
+import org.wxc.rpc.enums.MsgType;
+import org.wxc.rpc.enums.SerializeType;
+import org.wxc.rpc.enums.VersionType;
 
 /**
  * @author wangxinchao
  * @date 2025/10/28 20:41
  */
 @Slf4j
-public class NettyRpcServerHandler extends SimpleChannelInboundHandler<String> {
+public class NettyRpcServerHandler extends SimpleChannelInboundHandler<RpcMsg> {
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx,
-                                String rpcRequest) throws Exception {
-        log.debug("收到客户端请求: {}", rpcRequest);
-//        RpcResponse<String> rpcResponse = RpcResponse.success("123", "响应数据");
-        String rpcResponse = "响应数据";
-        ctx.writeAndFlush(rpcResponse)
+                                RpcMsg rpcMsg) throws Exception {
+        log.debug("收到客户端请求: {}", rpcMsg);
+        RpcRequest rpcRequest = (RpcRequest) rpcMsg.getData();
+        RpcResponse<String> rpcResponse = RpcResponse.success(rpcRequest.getRequestId()
+                , "响应数据");
+        RpcMsg rpcMsg1 = RpcMsg.builder()
+                .data(rpcResponse)
+                .requestId(rpcMsg.getRequestId())
+                .msgType(MsgType.RPC_RESP)
+                .versionType(VersionType.VERSION_1)
+                .serializeType(SerializeType.KRYO)
+                .compressType(CompressType.GZIP)
+                .build();
+        ctx.writeAndFlush(rpcMsg1)
                 .addListener(ChannelFutureListener.CLOSE);
     }
 

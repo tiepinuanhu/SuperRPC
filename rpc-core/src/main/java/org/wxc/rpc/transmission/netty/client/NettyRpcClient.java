@@ -13,14 +13,23 @@ import io.netty.util.AttributeKey;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.wxc.rpc.constant.RpcConstant;
+import org.wxc.rpc.dto.RpcMsg;
 import org.wxc.rpc.dto.RpcRequest;
 import org.wxc.rpc.dto.RpcResponse;
+import org.wxc.rpc.enums.CompressType;
+import org.wxc.rpc.enums.MsgType;
+import org.wxc.rpc.enums.SerializeType;
+import org.wxc.rpc.enums.VersionType;
 import org.wxc.rpc.transmission.RPCClient;
 import org.wxc.rpc.transmission.netty.codec.NettyRpcDecoder;
 import org.wxc.rpc.transmission.netty.codec.NettyRpcEncoder;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 @Slf4j
 public class NettyRpcClient implements RPCClient {
+    private static final AtomicInteger ID_GEN = new AtomicInteger(0);
+
 
     private static final Bootstrap bootstrap;
 
@@ -46,12 +55,12 @@ public class NettyRpcClient implements RPCClient {
 
     /**
      * 发送RPC请求
-     * @param request
+     * @param rpcRequest
      * @return
      */
     @SneakyThrows
     @Override
-    public RpcResponse<?> send(RpcRequest request) {
+    public RpcResponse<?> send(RpcRequest rpcRequest) {
         // 与客户端建立连接
         ChannelFuture channelFuture = bootstrap.connect("127.0.0.1", RpcConstant.SERVER_PORT).sync();
 
@@ -59,16 +68,25 @@ public class NettyRpcClient implements RPCClient {
         // 获取channel
         Channel channel = channelFuture.channel();
 
+
+        RpcMsg rpcMsg = RpcMsg.builder()
+                .requestId(ID_GEN.getAndIncrement())
+                .msgType(MsgType.RPC_REQ)
+                .versionType(VersionType.VERSION_1)
+                .serializeType(SerializeType.KRYO)
+                .compressType(CompressType.GZIP)
+                .data(rpcRequest)
+                .build();
         // 发送请求, 如果发送失败，则关闭连接
-        channel.writeAndFlush(request.getInterfaceName())
+        channel.writeAndFlush(rpcMsg)
                 .addListener(ChannelFutureListener.CLOSE_ON_FAILURE);
         // 关闭连接
         channel.closeFuture().sync();
         // 获取服务端返回的数据
-        AttributeKey<String> key
+        AttributeKey<RpcResponse> key
                 = AttributeKey.valueOf(RpcConstant.NETTY_RPC_KEY);
-        String s = channel.attr(key).get();
-        System.out.println(s);
+        RpcResponse rpcResponse = channel.attr(key).get();
+        System.out.println(rpcResponse);
         return null;
     }
 }

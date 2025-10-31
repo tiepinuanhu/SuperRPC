@@ -23,7 +23,7 @@ import java.io.Serializable;
 public class RpcMsg implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private String requestId;
+    private int requestId;
     private VersionType versionType;
     private MsgType msgType;
     private SerializeType serializeType;

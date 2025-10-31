@@ -5,6 +5,7 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.util.AttributeKey;
 import lombok.extern.slf4j.Slf4j;
 import org.wxc.rpc.constant.RpcConstant;
+import org.wxc.rpc.dto.RpcMsg;
 import org.wxc.rpc.dto.RpcResponse;
 
 /**
@@ -12,12 +13,13 @@ import org.wxc.rpc.dto.RpcResponse;
  * @date 2025/10/28 20:32
  */
 @Slf4j
-public class NettyRpcClientHandler extends SimpleChannelInboundHandler<String> {
+public class NettyRpcClientHandler extends SimpleChannelInboundHandler<RpcMsg> {
 
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, String rpcResponse) throws Exception {
-        log.debug("收到服务端返回: {}", rpcResponse);
-        AttributeKey<String> key = AttributeKey.valueOf(RpcConstant.NETTY_RPC_KEY);
+    protected void channelRead0(ChannelHandlerContext ctx, RpcMsg rpcMsg) throws Exception {
+        log.debug("收到服务端返回: {}", rpcMsg);
+        RpcResponse rpcResponse = (RpcResponse) rpcMsg.getData();
+        AttributeKey<RpcResponse> key = AttributeKey.valueOf(RpcConstant.NETTY_RPC_KEY);
         ctx.channel().attr(key).set(rpcResponse);
         ctx.close();
     }

@@ -24,5 +24,5 @@ public class RpcConstant {
     public static final byte[] RPC_MAGIC_NUMBER = {(byte)'p', (byte)'r', (byte)'p', (byte)'c'};
 
     public static final int REQ_HEAD_LEN = 16;
-    public static final int RESP_MAX_LEN = 1024 * 1024;
+    public static final int RESP_MAX_LEN = 1024 * 1024 * 8;
 }

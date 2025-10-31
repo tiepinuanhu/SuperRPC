@@ -26,7 +26,7 @@ public class ClientMain {
 
         NettyRpcClient rpcClient = new NettyRpcClient();
         RpcRequest rpcRequest = RpcRequest.builder()
-                .interfaceName("org.wxc.api.UserService").build();
+                .interfaceName("请求数据").build();
         rpcClient.send(rpcRequest);
     }
 }

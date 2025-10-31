@@ -13,6 +13,8 @@ import org.wxc.rpc.enums.MsgType;
 import org.wxc.rpc.enums.SerializeType;
 import org.wxc.rpc.enums.VersionType;
 
+import java.util.Objects;
+
 /**
  * @author wangxinchao
  * @date 2025/10/28 20:41
@@ -27,10 +29,19 @@ public class NettyRpcServerHandler extends SimpleChannelInboundHandler<RpcMsg> {
         RpcRequest rpcRequest = (RpcRequest) rpcMsg.getData();
         RpcResponse<String> rpcResponse = RpcResponse.success(rpcRequest.getRequestId()
                 , "响应数据");
+        MsgType msgType;
+        Object data;
+        if (rpcMsg.getMsgType().isHeartBeat()) {
+            msgType = MsgType.HEARTBEAT_RESP;
+            data = null;
+        } else {
+            msgType = MsgType.RPC_RESP;
+            data = rpcResponse;
+        }
         RpcMsg rpcMsg1 = RpcMsg.builder()
-                .data(rpcResponse)
+                .data(data)
                 .requestId(rpcMsg.getRequestId())
-                .msgType(MsgType.RPC_RESP)
+                .msgType(msgType)
                 .versionType(VersionType.VERSION_1)
                 .serializeType(SerializeType.KRYO)
                 .compressType(CompressType.GZIP)

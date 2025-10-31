@@ -4,21 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ae846d5-ea7b-43cb-8842-e7c3e5ae7de9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/constant/RpcConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/constant/RpcConstant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/dto/RpcMsg.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/dto/RpcMsg.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/enums/CompressType.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/enums/CompressType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/enums/MsgType.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/enums/MsgType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/enums/SerializeType.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/enums/SerializeType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/enums/VersionType.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/enums/VersionType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/netty/client/NettyRpcClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/netty/client/NettyRpcClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/netty/client/NettyRpcClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/netty/client/NettyRpcClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/netty/codec/NettyRpcDecoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/netty/codec/NettyRpcDecoder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/netty/codec/NettyRpcEncoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/netty/codec/NettyRpcEncoder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/netty/server/NettyRpcServerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/netty/server/NettyRpcServerHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-client/src/main/java/org/wxc/ClientMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/src/main/java/org/wxc/ClientMain.java" afterDir="false" />
-    </list>
+    <list default="true" id="9ae846d5-ea7b-43cb-8842-e7c3e5ae7de9" name="Changes" comment="添加Encoder和Decoder。Encoder将RpcMsg编码为byte[], Decoder将byte解码为RpcMsg。" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -285,7 +271,7 @@
       <workItem from="1761831181379" duration="654000" />
       <workItem from="1761873205812" duration="3381000" />
       <workItem from="1761880600486" duration="1857000" />
-      <workItem from="1761917865541" duration="2379000" />
+      <workItem from="1761917865541" duration="2987000" />
     </task>
     <task id="LOCAL-00001" summary="no bug">
       <option name="closed" value="true" />
@@ -391,7 +377,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761742603660</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="添加Encoder和Decoder。Encoder将RpcMsg编码为byte[], Decoder将byte解码为RpcMsg。">
+      <option name="closed" value="true" />
+      <created>1761920316784</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1761920316784</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -421,17 +415,7 @@
     <MESSAGE value="简单学习了Netty基础概念" />
     <MESSAGE value="实现了Netty客户端和服务端，并测试可以互相发送数据，但是发送的数据只能是String，因为handler只使用了StringEncoder和Decoder。" />
     <MESSAGE value="创建序列化和反序列化器，压缩和解压。创建了编码器，将RpcMsg转化为Byte数组。" />
-    <option name="LAST_COMMIT_MESSAGE" value="创建序列化和反序列化器，压缩和解压。创建了编码器，将RpcMsg转化为Byte数组。" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/netty/codec/NettyRpcDecoder.java</url>
-          <line>91</line>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="添加Encoder和Decoder。Encoder将RpcMsg编码为byte[], Decoder将byte解码为RpcMsg。" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加Encoder和Decoder。Encoder将RpcMsg编码为byte[], Decoder将byte解码为RpcMsg。" />
   </component>
 </project>

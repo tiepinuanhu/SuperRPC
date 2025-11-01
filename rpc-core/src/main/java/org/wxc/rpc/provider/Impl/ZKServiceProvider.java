@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * 给服务端使用的，服务注册或服务获取
  * @author wangxinchao
  * @date 2025/10/18 16:33
  */
@@ -35,7 +36,6 @@ public class ZKServiceProvider implements ServiceProvider {
     public void publishService(RPCServiceConfig rpcServiceConfig) {
         rpcServiceConfig.rpcServiceNames().forEach(rpcServiceName -> {
                 publishService(rpcServiceName, rpcServiceConfig.getService());
-
         });
     }
     @SneakyThrows

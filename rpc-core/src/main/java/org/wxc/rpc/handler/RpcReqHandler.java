@@ -9,15 +9,16 @@ import java.lang.reflect.Method;
 
 /**
  * 专门处理RPC请求的handler
+ * 服务端根据rpc请求调用对应的方法
  * @author wangxinchao
  * @date 2025/10/14 16:19
  */
 @Slf4j
-public class RPCReqHandler {
+public class RpcReqHandler {
     private final ServiceProvider serviceProvider;
 
 
-    public RPCReqHandler(ServiceProvider serviceProvider) {
+    public RpcReqHandler(ServiceProvider serviceProvider) {
         this.serviceProvider = serviceProvider;
     }
 

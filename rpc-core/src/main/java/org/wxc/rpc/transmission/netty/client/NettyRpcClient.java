@@ -20,10 +20,14 @@ import org.wxc.rpc.enums.CompressType;
 import org.wxc.rpc.enums.MsgType;
 import org.wxc.rpc.enums.SerializeType;
 import org.wxc.rpc.enums.VersionType;
+import org.wxc.rpc.factory.SingletonFactory;
+import org.wxc.rpc.registry.Impl.ZKServiceDiscovery;
+import org.wxc.rpc.registry.ServiceDiscovery;
 import org.wxc.rpc.transmission.RPCClient;
 import org.wxc.rpc.transmission.netty.codec.NettyRpcDecoder;
 import org.wxc.rpc.transmission.netty.codec.NettyRpcEncoder;
 
+import java.net.InetSocketAddress;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Slf4j
@@ -34,6 +38,17 @@ public class NettyRpcClient implements RPCClient {
     private static final Bootstrap bootstrap;
 
     private static final int CONNECT_TIMEOUT_MILLIS = 5000;
+
+
+    private final ServiceDiscovery serviceDiscovery;
+
+    public NettyRpcClient(ServiceDiscovery serviceDiscovery) {
+        this.serviceDiscovery = serviceDiscovery;
+    }
+
+    public NettyRpcClient() {
+        this(SingletonFactory.getInstance(ZKServiceDiscovery.class));
+    }
 
     // 初始化客户端启动器BootStrap
     static {
@@ -61,8 +76,11 @@ public class NettyRpcClient implements RPCClient {
     @SneakyThrows
     @Override
     public RpcResponse<?> send(RpcRequest rpcRequest) {
+
+
+        InetSocketAddress address = serviceDiscovery.lookupService(rpcRequest);
         // 与客户端建立连接
-        ChannelFuture channelFuture = bootstrap.connect("127.0.0.1", RpcConstant.SERVER_PORT).sync();
+        ChannelFuture channelFuture = bootstrap.connect(address).sync();
 
         log.info("连接到xxxxxxxxxxxxxx");
         // 获取channel
@@ -86,7 +104,6 @@ public class NettyRpcClient implements RPCClient {
         AttributeKey<RpcResponse> key
                 = AttributeKey.valueOf(RpcConstant.NETTY_RPC_KEY);
         RpcResponse rpcResponse = channel.attr(key).get();
-        System.out.println(rpcResponse);
-        return null;
+        return rpcResponse;
     }
 }

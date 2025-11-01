@@ -6,17 +6,18 @@ import io.netty.channel.ChannelInitializer;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import io.netty.handler.codec.string.StringDecoder;
-import io.netty.handler.codec.string.StringEncoder;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.wxc.rpc.config.RPCServiceConfig;
 import org.wxc.rpc.constant.RpcConstant;
+import org.wxc.rpc.factory.SingletonFactory;
+import org.wxc.rpc.provider.Impl.ZKServiceProvider;
+import org.wxc.rpc.provider.ServiceProvider;
 import org.wxc.rpc.transmission.RPCServer;
 import org.wxc.rpc.transmission.netty.codec.NettyRpcDecoder;
 import org.wxc.rpc.transmission.netty.codec.NettyRpcEncoder;
+import org.wxc.rpc.util.ShutdownHookUtils;
 
 /**
  * @author wangxinchao
@@ -24,6 +25,10 @@ import org.wxc.rpc.transmission.netty.codec.NettyRpcEncoder;
  */
 @Slf4j
 public class NettyRpcServer implements RPCServer {
+
+    private final ServiceProvider serviceProvider;
+
+    private final int port;
 
     public NettyRpcServer(ServiceProvider serviceProvider) {
         this(serviceProvider, RpcConstant.SERVER_PORT);
@@ -54,7 +59,7 @@ public class NettyRpcServer implements RPCServer {
                     .handler(new LoggingHandler(LogLevel.INFO))
                     .childHandler(new ChannelInitializer<NioSocketChannel>() {
                         @Override
-                        protected void initChannel(NioSocketChannel ch) throws Exception {
+                        protected void initChannel(NioSocketChannel ch) {
                             ch.pipeline().addLast(new NettyRpcDecoder());
                             ch.pipeline().addLast(new NettyRpcEncoder());
                             ch.pipeline().addLast(new NettyRpcServerHandler(serviceProvider));
@@ -75,6 +80,6 @@ public class NettyRpcServer implements RPCServer {
 
     @Override
     public void publishService(RPCServiceConfig config) {
-
+        serviceProvider.publishService(config);
     }
 }

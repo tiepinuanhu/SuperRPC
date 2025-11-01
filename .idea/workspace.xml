@@ -4,7 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ae846d5-ea7b-43cb-8842-e7c3e5ae7de9" name="Changes" comment="添加Encoder和Decoder。Encoder将RpcMsg编码为byte[], Decoder将byte解码为RpcMsg。" />
+    <list default="true" id="9ae846d5-ea7b-43cb-8842-e7c3e5ae7de9" name="Changes" comment="客户端发送的请求可能是RPC请求，也可能是心跳请求，根据客户端的MsgType，相应的，服务端返回的MsgType也要对对应，如果客户端是心跳请求，则请求和相应都不携带数据">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/handler/RPCReqHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/handler/RpcReqHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/provider/Impl/ZKServiceProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/provider/Impl/ZKServiceProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/registry/Impl/ZKServiceDiscovery.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/registry/Impl/ZKServiceDiscovery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/netty/client/NettyRpcClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/netty/client/NettyRpcClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/netty/server/NettyRpcServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/netty/server/NettyRpcServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/netty/server/NettyRpcServerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/netty/server/NettyRpcServerHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/socket/server/SocketRPCServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/socket/server/SocketRpcServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/socket/server/SocketReqHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/org/wxc/rpc/transmission/socket/server/SocketReqHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/main/java/org/wxc/ClientMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/src/main/java/org/wxc/ClientMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/main/java/org/wxc/utils/ProxyUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/src/main/java/org/wxc/utils/ProxyUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-server/src/main/java/org/wxc/ServerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/test-server/src/main/java/org/wxc/ServerMain.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -65,7 +78,7 @@
     "Application.NettyClient.executor": "Run",
     "Application.NettyServer.executor": "Run",
     "Application.ServerMain (1).executor": "Run",
-    "Application.ServerMain.executor": "Debug",
+    "Application.ServerMain.executor": "Run",
     "Application.ZKServiceRegistry.executor": "Run",
     "Application.client.executor": "Run",
     "Application.server.executor": "Run",
@@ -116,59 +129,17 @@
           <value>
             <map>
               <entry key="ClientMain" value="STOPPED" />
-              <entry key="NettyClient" value="STOPPED" />
-              <entry key="NettyServer" value="STOPPED" />
               <entry key="ServerMain" value="STOPPED" />
-              <entry key="ServerMain (1)" value="STOPPED" />
             </map>
           </value>
         </entry>
       </map>
     </option>
   </component>
-  <component name="RunManager" selected="Application.NettyServer">
+  <component name="RunManager" selected="Application.ServerMain">
     <configuration name="ClientMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.wxc.ClientMain" />
       <module name="test-client" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.wxc.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NettyClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.wxc.nettytest.NettyClient" />
-      <module name="test-client" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.wxc.nettytest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NettyServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.wxc.nettytest.NettyServer" />
-      <module name="test-server" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.wxc.nettytest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ServerMain (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.wxc.ServerMain" />
-      <module name="test-server" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.wxc.*" />
@@ -214,19 +185,13 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Application.NettyClient" />
-      <item itemvalue="Application.NettyServer" />
       <item itemvalue="Application.ClientMain" />
       <item itemvalue="Application.ServerMain" />
-      <item itemvalue="Application.ServerMain (1)" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.ClientMain" />
         <item itemvalue="Application.ServerMain" />
-        <item itemvalue="Application.NettyServer" />
-        <item itemvalue="Application.NettyClient" />
-        <item itemvalue="Application.ServerMain (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -271,7 +236,9 @@
       <workItem from="1761831181379" duration="654000" />
       <workItem from="1761873205812" duration="3381000" />
       <workItem from="1761880600486" duration="1857000" />
-      <workItem from="1761917865541" duration="2987000" />
+      <workItem from="1761917865541" duration="3379000" />
+      <workItem from="1761960312983" duration="2046000" />
+      <workItem from="1761962424910" duration="3329000" />
     </task>
     <task id="LOCAL-00001" summary="no bug">
       <option name="closed" value="true" />
@@ -385,7 +352,55 @@
       <option name="project" value="LOCAL" />
       <updated>1761920316784</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="客户端发送的请求可能是RPC请求，也可能是心跳请求，根据客户端的MsgType，相应的，服务端返回的MsgType也要对对应，如果客户端是心跳请求，则请求和相应都不携带数据">
+      <option name="closed" value="true" />
+      <created>1761921249485</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1761921249485</updated>
+    </task>
+    <task id="LOCAL-00016" summary="使用NettyRpcClient">
+      <option name="closed" value="true" />
+      <created>1761962507290</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1761962507290</updated>
+    </task>
+    <task id="LOCAL-00017" summary="使用传入的port">
+      <option name="closed" value="true" />
+      <created>1761962670048</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1761962670048</updated>
+    </task>
+    <task id="LOCAL-00018" summary="在JVM关闭时清理Zookeeper创建的node，清理线程池等">
+      <option name="closed" value="true" />
+      <created>1761962729765</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1761962729765</updated>
+    </task>
+    <task id="LOCAL-00019" summary="一些构造方法">
+      <option name="closed" value="true" />
+      <created>1761962747419</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1761962747419</updated>
+    </task>
+    <task id="LOCAL-00020" summary="服务端的handler，根据解析出的rpc请求，调用对应的方法">
+      <option name="closed" value="true" />
+      <created>1761966643505</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1761966643505</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -416,6 +431,12 @@
     <MESSAGE value="实现了Netty客户端和服务端，并测试可以互相发送数据，但是发送的数据只能是String，因为handler只使用了StringEncoder和Decoder。" />
     <MESSAGE value="创建序列化和反序列化器，压缩和解压。创建了编码器，将RpcMsg转化为Byte数组。" />
     <MESSAGE value="添加Encoder和Decoder。Encoder将RpcMsg编码为byte[], Decoder将byte解码为RpcMsg。" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加Encoder和Decoder。Encoder将RpcMsg编码为byte[], Decoder将byte解码为RpcMsg。" />
+    <MESSAGE value="客户端发送的请求可能是RPC请求，也可能是心跳请求，根据客户端的MsgType，相应的，服务端返回的MsgType也要对对应，如果客户端是心跳请求，则请求和相应都不携带数据" />
+    <MESSAGE value="使用NettyRpcClient" />
+    <MESSAGE value="使用传入的port" />
+    <MESSAGE value="在JVM关闭时清理Zookeeper创建的node，清理线程池等" />
+    <MESSAGE value="一些构造方法" />
+    <MESSAGE value="服务端的handler，根据解析出的rpc请求，调用对应的方法" />
+    <option name="LAST_COMMIT_MESSAGE" value="服务端的handler，根据解析出的rpc请求，调用对应的方法" />
   </component>
 </project>

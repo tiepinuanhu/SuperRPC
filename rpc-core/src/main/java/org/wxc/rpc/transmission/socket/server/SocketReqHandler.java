@@ -5,7 +5,7 @@ import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.wxc.rpc.dto.RpcRequest;
 import org.wxc.rpc.dto.RpcResponse;
-import org.wxc.rpc.handler.RPCReqHandler;
+import org.wxc.rpc.handler.RpcReqHandler;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -24,7 +24,7 @@ public class SocketReqHandler implements Runnable {
     private final Socket socket;
 
 
-    private final RPCReqHandler reqHandler;
+    private final RpcReqHandler reqHandler;
 
     /**
      * 服务端线程执行的逻辑

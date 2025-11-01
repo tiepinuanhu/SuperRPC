@@ -15,18 +15,18 @@ import java.util.concurrent.Executors;
  */
 public class ClientMain {
     public static void main( String[] args) {
-//        UserService userService = ProxyUtils.getProxy(UserService.class);
+        UserService userService = ProxyUtils.getProxy(UserService.class);
 //        ExecutorService pool = Executors.newFixedThreadPool(10);
 //        for (int i = 0; i < 10; i++) {
 //            pool.execute(() -> {
-//                User user = userService.getUser(1L);
-//                System.out.println("user = " + user);
 //            });
 //        }
+        User user = userService.getUser(1L);
+        System.out.println("user = " + user);
 
-        NettyRpcClient rpcClient = new NettyRpcClient();
-        RpcRequest rpcRequest = RpcRequest.builder()
-                .interfaceName("请求数据").build();
-        rpcClient.send(rpcRequest);
+//        NettyRpcClient rpcClient = new NettyRpcClient();
+//        RpcRequest rpcRequest = RpcRequest.builder()
+//                .interfaceName("org.wxc.api.UserService").build();
+//        rpcClient.send(rpcRequest);
     }
 }

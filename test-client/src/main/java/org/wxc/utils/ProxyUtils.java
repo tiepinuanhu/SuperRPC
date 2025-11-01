@@ -1,9 +1,8 @@
 package org.wxc.utils;
 
-import cn.hutool.core.lang.Singleton;
 import org.wxc.rpc.factory.SingletonFactory;
 import org.wxc.rpc.proxy.PRCClientProxy;
-import org.wxc.rpc.transmission.socket.client.SocketRPCClient;
+import org.wxc.rpc.transmission.netty.client.NettyRpcClient;
 
 /**
  * @author wangxinchao

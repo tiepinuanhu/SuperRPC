@@ -11,8 +11,8 @@ import org.wxc.rpc.transmission.socket.client.SocketRPCClient;
  */
 public class ProxyUtils {
 
-    private static final SocketRPCClient rpcClient =
-            SingletonFactory.getInstance(SocketRPCClient.class);
+    private static final NettyRpcClient rpcClient =
+            SingletonFactory.getInstance(NettyRpcClient.class);
 
     private static final PRCClientProxy proxy = new PRCClientProxy(rpcClient);
     /**

@@ -28,7 +28,10 @@ import org.wxc.rpc.transmission.RPCClient;
 import org.wxc.rpc.transmission.netty.codec.NettyRpcDecoder;
 import org.wxc.rpc.transmission.netty.codec.NettyRpcEncoder;
 
+import java.io.Closeable;
 import java.net.InetSocketAddress;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Slf4j
@@ -42,8 +45,13 @@ public class NettyRpcClient implements RPCClient {
 
     private final ServiceDiscovery serviceDiscovery;
 
+
+    private final ChannelPool channelPool;
+
+
     public NettyRpcClient(ServiceDiscovery serviceDiscovery) {
         this.serviceDiscovery = serviceDiscovery;
+        channelPool = SingletonFactory.getInstance(ChannelPool.class);
     }
 
     public NettyRpcClient() {
@@ -60,7 +68,8 @@ public class NettyRpcClient implements RPCClient {
             .handler(new ChannelInitializer<NioSocketChannel>() {
                 @Override
                 protected void initChannel(NioSocketChannel ch) {
-                    ch.pipeline().addLast(new IdleStateHandler(0, 5, 0));
+                    ch.pipeline().addLast(new IdleStateHandler(0, 5,
+                            0, TimeUnit.SECONDS));
                     ch.pipeline().addLast(new NettyRpcEncoder());
                     ch.pipeline().addLast(new NettyRpcDecoder());
                     ch.pipeline().addLast(new NettyRpcClientHandler());
@@ -76,19 +85,16 @@ public class NettyRpcClient implements RPCClient {
     @SneakyThrows
     @Override
     public RpcResponse<?> send(RpcRequest rpcRequest) {
-
+        CompletableFuture<RpcResponse<?>> future = new CompletableFuture<>();
+        UnprocessedRpcReq.put(rpcRequest.getRequestId(), future);
 
         InetSocketAddress address = serviceDiscovery.lookupService(rpcRequest);
         // 与客户端建立连接
-        ChannelFuture channelFuture = bootstrap.connect(address).sync();
+        Channel channel = channelPool.get(address, () -> connect(address));
 
-        log.info("连接到xxxxxxxxxxxxxx");
-        // 获取channel
-        Channel channel = channelFuture.channel();
-
+        log.info("连接到{}", address);
 
         RpcMsg rpcMsg = RpcMsg.builder()
-                .requestId(ID_GEN.getAndIncrement())
                 .msgType(MsgType.RPC_REQ)
                 .versionType(VersionType.VERSION_1)
                 .serializeType(SerializeType.KRYO)
@@ -97,13 +103,21 @@ public class NettyRpcClient implements RPCClient {
                 .build();
         // 发送请求, 如果发送失败，则关闭连接
         channel.writeAndFlush(rpcMsg)
-                .addListener(ChannelFutureListener.CLOSE_ON_FAILURE);
-        // 关闭连接
-        channel.closeFuture().sync();
-        // 获取服务端返回的数据
-        AttributeKey<RpcResponse> key
-                = AttributeKey.valueOf(RpcConstant.NETTY_RPC_KEY);
-        RpcResponse rpcResponse = channel.attr(key).get();
-        return rpcResponse;
+            .addListener((ChannelFutureListener) listener ->{
+                if (!listener.isSuccess()) {
+                    listener.channel().close();
+                    future.completeExceptionally(listener.cause());
+                }
+            });
+        return future.get();
+    }
+
+    private Channel connect(InetSocketAddress address) {
+        try {
+            return bootstrap.connect(address).sync().channel();
+        } catch (InterruptedException e) {
+            log.debug("连接失败");
+            throw new RuntimeException(e);
+        }
     }
 }

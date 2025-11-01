@@ -20,6 +20,8 @@ import org.wxc.rpc.transmission.netty.codec.NettyRpcDecoder;
 import org.wxc.rpc.transmission.netty.codec.NettyRpcEncoder;
 import org.wxc.rpc.util.ShutdownHookUtils;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * @author wangxinchao
  * @date 2025/10/28 17:10
@@ -62,7 +64,8 @@ public class NettyRpcServer implements RPCServer {
                         @Override
                         protected void initChannel(NioSocketChannel ch) {
                             // 服务端30s没有从Channel上读取到数据，就关闭
-                            ch.pipeline().addLast(new IdleStateHandler(30, 0, 0));
+                            ch.pipeline().addLast(new IdleStateHandler(30, 0,
+                                    0, TimeUnit.SECONDS));
                             ch.pipeline().addLast(new NettyRpcDecoder());
                             ch.pipeline().addLast(new NettyRpcEncoder());
                             ch.pipeline().addLast(new NettyRpcServerHandler(serviceProvider));

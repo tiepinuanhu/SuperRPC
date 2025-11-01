@@ -21,7 +21,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class NettyRpcEncoder extends MessageToByteEncoder<RpcMsg> {
 
-    private static final AtomicInteger ID_GEN = new AtomicInteger(0);
+    public static final AtomicInteger ID_GEN = new AtomicInteger(0);
 
     /**
      * 只有将数据写入到ByteBuf，Netty才能将数据写入到Channel中

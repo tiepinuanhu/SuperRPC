@@ -43,6 +43,7 @@ public class NettyRpcServer implements RPCServer {
                             ch.pipeline().addLast(new NettyRpcServerHandler());
                         }
                     });
+            ShutdownHookUtils.clearAll();
             ChannelFuture channelFuture = serverBootstrap.bind(port).sync();
             log.info("服务启动成功,  端口：{}", port);
             channelFuture.channel().closeFuture().sync();

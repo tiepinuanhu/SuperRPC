@@ -9,6 +9,7 @@ import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
+import io.netty.handler.timeout.IdleStateHandler;
 import io.netty.util.AttributeKey;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -32,7 +33,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 @Slf4j
 public class NettyRpcClient implements RPCClient {
-    private static final AtomicInteger ID_GEN = new AtomicInteger(0);
 
 
     private static final Bootstrap bootstrap;
@@ -59,11 +59,11 @@ public class NettyRpcClient implements RPCClient {
             .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, CONNECT_TIMEOUT_MILLIS)
             .handler(new ChannelInitializer<NioSocketChannel>() {
                 @Override
-                protected void initChannel(NioSocketChannel ch) throws Exception {
+                protected void initChannel(NioSocketChannel ch) {
+                    ch.pipeline().addLast(new IdleStateHandler(0, 5, 0));
                     ch.pipeline().addLast(new NettyRpcEncoder());
                     ch.pipeline().addLast(new NettyRpcDecoder());
                     ch.pipeline().addLast(new NettyRpcClientHandler());
-
                 }
             });
     }

@@ -26,6 +26,9 @@ import org.wxc.rpc.serialize.Serialazer;
  */
 public class NettyRpcDecoder extends LengthFieldBasedFrameDecoder {
 
+
+
+
     public NettyRpcDecoder() {
         super(RpcConstant.RESP_MAX_LEN, 5, 4, -9, 0);
     }

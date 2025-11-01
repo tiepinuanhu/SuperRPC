@@ -8,6 +8,7 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
+import io.netty.handler.timeout.IdleStateHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.wxc.rpc.config.RPCServiceConfig;
 import org.wxc.rpc.constant.RpcConstant;
@@ -60,6 +61,8 @@ public class NettyRpcServer implements RPCServer {
                     .childHandler(new ChannelInitializer<NioSocketChannel>() {
                         @Override
                         protected void initChannel(NioSocketChannel ch) {
+                            // 服务端30s没有从Channel上读取到数据，就关闭
+                            ch.pipeline().addLast(new IdleStateHandler(30, 0, 0));
                             ch.pipeline().addLast(new NettyRpcDecoder());
                             ch.pipeline().addLast(new NettyRpcEncoder());
                             ch.pipeline().addLast(new NettyRpcServerHandler(serviceProvider));

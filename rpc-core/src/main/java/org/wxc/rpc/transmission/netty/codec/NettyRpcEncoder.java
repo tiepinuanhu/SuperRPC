@@ -12,6 +12,7 @@ import org.wxc.rpc.serialize.Impl.KryoSerializer;
 import org.wxc.rpc.serialize.Serialazer;
 
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * 自己协议的编码器
@@ -20,6 +21,7 @@ import java.util.Objects;
  */
 public class NettyRpcEncoder extends MessageToByteEncoder<RpcMsg> {
 
+    private static final AtomicInteger ID_GEN = new AtomicInteger(0);
 
     /**
      * 只有将数据写入到ByteBuf，Netty才能将数据写入到Channel中
@@ -38,7 +40,7 @@ public class NettyRpcEncoder extends MessageToByteEncoder<RpcMsg> {
         byteBuf.writeByte(rpcMsg.getMsgType().getCode()); // message type 1B
         byteBuf.writeByte(rpcMsg.getSerializeType().getCode()); // serialize type 1B
         byteBuf.writeByte(rpcMsg.getCompressType().getCode()); // compress type 1B
-        byteBuf.writeInt(rpcMsg.getRequestId()); // request id 4B
+        byteBuf.writeInt(ID_GEN.getAndIncrement()); // request id 4B
 
 
         int msgLen = RpcConstant.REQ_HEAD_LEN;

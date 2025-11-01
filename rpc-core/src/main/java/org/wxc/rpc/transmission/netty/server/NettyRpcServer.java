@@ -25,6 +25,23 @@ import org.wxc.rpc.transmission.netty.codec.NettyRpcEncoder;
 @Slf4j
 public class NettyRpcServer implements RPCServer {
 
+    public NettyRpcServer(ServiceProvider serviceProvider) {
+        this(serviceProvider, RpcConstant.SERVER_PORT);
+    }
+    public NettyRpcServer(int port) {
+        this(SingletonFactory.getInstance(ZKServiceProvider.class),
+                port);
+    }
+    public NettyRpcServer() {
+        this(SingletonFactory.getInstance(ZKServiceProvider.class),
+                RpcConstant.SERVER_PORT);
+    }
+
+
+    public NettyRpcServer(ServiceProvider serviceProvider, int port) {
+        this.serviceProvider = serviceProvider;
+        this.port = port;
+    }
 
     @Override
     public void start() {

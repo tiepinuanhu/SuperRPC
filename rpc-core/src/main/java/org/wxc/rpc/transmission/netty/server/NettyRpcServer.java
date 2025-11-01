@@ -43,8 +43,8 @@ public class NettyRpcServer implements RPCServer {
                             ch.pipeline().addLast(new NettyRpcServerHandler());
                         }
                     });
-            ChannelFuture channelFuture = serverBootstrap.bind(RpcConstant.SERVER_PORT).sync();
-            log.info("服务启动成功,  端口：{}", RpcConstant.SERVER_PORT);
+            ChannelFuture channelFuture = serverBootstrap.bind(port).sync();
+            log.info("服务启动成功,  端口：{}", port);
             channelFuture.channel().closeFuture().sync();
         } catch (InterruptedException e) {
             log.error("启动服务失败");

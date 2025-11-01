@@ -57,7 +57,7 @@ public class NettyRpcServer implements RPCServer {
                         protected void initChannel(NioSocketChannel ch) throws Exception {
                             ch.pipeline().addLast(new NettyRpcDecoder());
                             ch.pipeline().addLast(new NettyRpcEncoder());
-                            ch.pipeline().addLast(new NettyRpcServerHandler());
+                            ch.pipeline().addLast(new NettyRpcServerHandler(serviceProvider));
                         }
                     });
             ShutdownHookUtils.clearAll();

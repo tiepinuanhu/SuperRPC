@@ -15,9 +15,7 @@ import java.util.Arrays;
 @AllArgsConstructor
 public enum CompressType {
 
-    GZIP((byte) 1, "gzip")
-
-    ;
+    GZIP((byte) 1, "gzip");
 
     private final byte code;
     private final String desc;

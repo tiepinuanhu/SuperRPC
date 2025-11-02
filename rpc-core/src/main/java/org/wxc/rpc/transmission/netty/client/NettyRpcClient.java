@@ -1,19 +1,14 @@
 package org.wxc.rpc.transmission.netty.client;
 
-import cn.hutool.json.JSONUtil;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import io.netty.handler.codec.string.StringDecoder;
-import io.netty.handler.codec.string.StringEncoder;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 import io.netty.handler.timeout.IdleStateHandler;
-import io.netty.util.AttributeKey;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-import org.wxc.rpc.constant.RpcConstant;
 import org.wxc.rpc.dto.RpcMsg;
 import org.wxc.rpc.dto.RpcRequest;
 import org.wxc.rpc.dto.RpcResponse;
@@ -28,11 +23,9 @@ import org.wxc.rpc.transmission.RPCClient;
 import org.wxc.rpc.transmission.netty.codec.NettyRpcDecoder;
 import org.wxc.rpc.transmission.netty.codec.NettyRpcEncoder;
 
-import java.io.Closeable;
 import java.net.InetSocketAddress;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicInteger;
 
 @Slf4j
 public class NettyRpcClient implements RPCClient {
@@ -89,7 +82,8 @@ public class NettyRpcClient implements RPCClient {
         UnprocessedRpcReq.put(rpcRequest.getRequestId(), future);
 
         InetSocketAddress address = serviceDiscovery.lookupService(rpcRequest);
-        // 与客户端建立连接
+        // 使用channelPool获取连接，这样客户端在Channel没有关闭的情况下，可以复用Channel
+        // 不用每发一次请求都去建立连接，关闭连接
         Channel channel = channelPool.get(address, () -> connect(address));
 
         log.info("连接到{}", address);

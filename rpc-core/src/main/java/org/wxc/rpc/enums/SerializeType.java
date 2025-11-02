@@ -14,8 +14,7 @@ import java.util.Arrays;
 @ToString
 @AllArgsConstructor
 public enum SerializeType {
-    KRYO((byte) 1, "kryo"),
-    ;
+    KRYO((byte) 1, "kryo");
 
     private final byte code;
     private final String desc;
